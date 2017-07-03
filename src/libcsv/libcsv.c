@@ -156,7 +156,7 @@ csv_free(struct csv_parser *p)
 }
 
 int
-csv_fini(struct csv_parser *p, void (*cb1)(void *, size_t, void *), void (*cb2)(int c, void *), void *data)
+csv_fini(struct csv_parser *p, void (*cb1)(void *, size_t, void **), void (*cb2)(int c, void **), void **data)
 {
   /* Finalize parsing.  Needed, for example, when file does not end in a newline */
   int quoted = p->quoted;

@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     uvector_t *pPoints = &points[0];
     unsigned char options = 0;
     csv_init(&p, options);
-    csv_set_delim(&p, ';');
+    csv_set_delim(&p, ',');
     char buffer[1024];
     size_t bytes_read;
     FILE *fstream = fopen("data.txt","r");
@@ -34,5 +34,8 @@ int main(int argc, char* argv[])
             fprintf(stderr, "Error while parsing file: %s\n", csv_strerror(csv_error(&p)));
         }
     }
+
+    csv_fini(&p, &cb1, &cb2, (void **) &pPoints);
+    return 0;
 
 }
